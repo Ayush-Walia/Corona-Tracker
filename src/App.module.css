@@ -1,0 +1,16 @@
+body {
+    background-color: #e9ecef;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+@media (max-width: 770px) {
+    .container {
+        margin: 0 10%;
+    }
+}
