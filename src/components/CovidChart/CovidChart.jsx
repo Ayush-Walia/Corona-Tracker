@@ -44,10 +44,6 @@ const CovidChart = (props) => {
               stops: [20, 100, 100, 100]
             },
         },
-        title: {
-          text: 'Spread Trends',
-          align: 'left'
-        },
         grid: {
           row: {
             colors: ['#f3f3f3', 'transparent'], 

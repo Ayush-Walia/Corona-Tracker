@@ -2,6 +2,21 @@ import React from 'react';
 import { Cards, CovidChart, Table, ProgressIndicator } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api';
+import { Typography, Box } from '@material-ui/core';
+import { createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/styles';
+
+const theme = createMuiTheme({
+  typography: {
+    fontFamily: [
+      'Ubuntu',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif'
+    ].join(','),
+  }
+});
 
 class App extends React.Component {
   state = {
@@ -23,18 +38,42 @@ class App extends React.Component {
   render() {
     const { overallData, dailyData, stateWiseData } = this.state;
     if (dailyData.length === 0) {
-      return(
-        <div className={styles.progressCircleContainer}>
-          <ProgressIndicator />
-        </div>
+      return (
+        <ThemeProvider theme={theme}>
+          <div className={styles.progressCircleContainer}>
+            <ProgressIndicator />
+          </div>
+        </ThemeProvider>
       )
     }
     return (
-      <div className={styles.container}>
-        <Cards data={overallData} />
-        <CovidChart data={dailyData} />
-        <Table data={stateWiseData}/>
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className={styles.container}>
+        <Typography variant="h3" className={styles.headingContainer}>
+            <Box fontWeight="fontWeightBold">
+              GO CORONA!
+              <span role="img" aria-label="mask-face"> 😷 </span>
+              #StayHome
+            </Box>
+          </Typography>
+          <Cards data={overallData} />
+          <Typography variant="h3" className={styles.headingContainer}>
+            <Box fontWeight="fontWeightBold">
+              Spread Trends
+            </Box>
+          </Typography>
+          <CovidChart data={dailyData} />
+          <Typography variant="h3" className={styles.headingContainer}>
+            <Box fontWeight="fontWeightBold">
+              <br/>
+              State Wise Data
+              <br/>
+              <br/>
+            </Box>
+          </Typography>
+          <Table data={stateWiseData} />
+        </div>
+      </ThemeProvider>
     )
   }
 }

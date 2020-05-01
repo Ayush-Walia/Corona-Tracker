@@ -1,3 +1,15 @@
 .container {
     width: 70%
 }
+
+.noDataContainer {
+    display: flex;
+    justify-content: center;
+}
+
+/* Todo: Make responsive 
+@media (max-width: 770px) {
+    .container {
+        width: 120%
+    }
+} */

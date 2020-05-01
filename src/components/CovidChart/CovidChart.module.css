@@ -4,8 +4,9 @@
     align-items: center;
 }
 
+/* Todo: Do something for small displays 
 @media (max-width: 770px) {
     .container {
-       width: 100%;
+       width: 110%;
     }
-}
+} */
