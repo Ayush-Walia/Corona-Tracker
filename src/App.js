@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cards, CovidChart, Table, ProgressIndicator } from './components';
+import { Cards, CovidChart, Table, ProgressIndicator, Footer } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api';
 import { Typography, Box } from '@material-ui/core';
@@ -72,6 +72,7 @@ class App extends React.Component {
             </Box>
           </Typography>
           <Table data={stateWiseData} />
+          <Footer />
         </div>
       </ThemeProvider>
     )

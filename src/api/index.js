@@ -13,7 +13,7 @@ export const fetchData = async() => {
             dailyData: fetchedData.data.cases_time_series.splice(42, fetchedData.data.cases_time_series.length),
             stateWiseData: fetchedData.data.statewise.splice(1, fetchedData.data.statewise.length)
         }
-        await modifiedData.stateWiseData.map((statename, index) => {
+        await modifiedData.stateWiseData.forEach((statename, index) => {
             if (fetchedDistrictData[statename.state] === undefined) {
                 modifiedData.stateWiseData[index]['districtData'] = [];
             }
