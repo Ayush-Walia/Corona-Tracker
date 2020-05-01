@@ -14,7 +14,29 @@ const getTypography = (weight, text) => {
     )
 }
 
-const Cards = ({ data: { active, confirmed, recovered, deaths }}) => {
+const months = {
+    '01': 'Jan',
+    '02': 'Feb',
+    '03': 'Mar',
+    '04': 'Apr',
+    '05': 'May',
+    '06': 'Jun',
+    '07': 'Jul',
+    '08': 'Aug',
+    '09': 'Sep',
+    '10': 'Oct',
+    '11': 'Nov',
+    '12': 'Dec',
+};
+
+const formatDate = (rawDate) => {
+    const day = rawDate.slice(0, 2);
+    const month = rawDate.slice(3, 5);
+    const time = rawDate.slice(11);
+    return `${day} ${months[month]}, ${time.slice(0, 5)} IST`;
+};
+
+const Cards = ({ data: { active, confirmed, recovered, deaths, lastupdatedtime }}) => {
     return (
         <div className={ styles.container }> 
             <Grid container spacing={2} justify="center">
@@ -55,6 +77,12 @@ const Cards = ({ data: { active, confirmed, recovered, deaths }}) => {
                     </CardContent>
                 </Grid>
             </Grid>
+            <br />
+            <Typography color="textSecondary" className={styles.lastUpdate}>
+                <Box fontWeight="fontWeightRegular">
+                    <span>Last Updated: {formatDate(lastupdatedtime)}</span>
+                </Box>
+            </Typography>
         </div>
     )
 }
