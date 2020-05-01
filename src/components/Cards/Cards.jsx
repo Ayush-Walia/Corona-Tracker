@@ -5,8 +5,6 @@ import CountUp from 'react-countup';
 import cx from 'classnames';
 
 const Cards = ({ data: { active, confirmed, recovered, deaths, lastupdatedtime }}) => {
-    if(!active)
-        return "Loading ...";
     return (
         <div className={ styles.container }> 
             <Grid container spacing={3} justify="center">

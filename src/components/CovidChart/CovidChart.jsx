@@ -3,7 +3,6 @@ import ReactApexChart from "react-apexcharts";
 import styles from './CovidChart.module.css';
 
 const CovidChart = (props) => {
-    console.log(props)
     let CovidChartData =  {
       series: [
         {

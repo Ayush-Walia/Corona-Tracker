@@ -1,34 +1,39 @@
 import React from 'react';
-import { Cards, CovidChart } from './components';
+import { Cards, CovidChart, Table, ProgressIndicator } from './components';
 import styles from './App.module.css';
 import { fetchData } from './api';
 
 class App extends React.Component {
   state = {
     overallData: {},
-    dailyData: []
+    dailyData: [],
+    stateWiseData: []
   }
 
   async componentDidMount() {
     const fetchedData = await fetchData();
-    if(fetchData)
+    if(fetchedData)
       this.setState({ 
         overallData: fetchedData.overallData,
-        dailyData: fetchedData.dailyData
+        dailyData: fetchedData.dailyData,
+        stateWiseData: fetchedData.stateWiseData
       });
   }
 
-  // handleCountryChange = async (country) => {
-  //     const fetchedData = await fetchData(country);
-  //     this.setState({ data: fetchedData, country: country });
-  // }
-
   render() {
-    const { overallData, dailyData } = this.state;
+    const { overallData, dailyData, stateWiseData } = this.state;
+    if (dailyData.length === 0) {
+      return(
+        <div className={styles.progressCircleContainer}>
+          <ProgressIndicator />
+        </div>
+      )
+    }
     return (
       <div className={styles.container}>
         <Cards data={overallData} />
         <CovidChart data={dailyData} />
+        <Table data={stateWiseData}/>
       </div>
     )
   }
