@@ -49,28 +49,32 @@ class App extends React.Component {
     return (
       <ThemeProvider theme={theme}>
         <div className={styles.container}>
-        <Typography variant="h3" className={styles.headingContainer}>
-            <Box fontWeight="fontWeightBold">
-              GO CORONA!
+          <div className={styles.responsiveContainer}>
+            <Typography variant="h3" className={styles.headingContainer}>
+              <Box fontWeight="fontWeightBold">
+                GO CORONA!
               <span role="img" aria-label="mask-face"> 😷 </span>
               #StayHome
             </Box>
-          </Typography>
-          <Cards data={overallData} />
-          <Typography variant="h3" className={styles.headingContainer}>
-            <Box fontWeight="fontWeightBold">
-              Spread Trends
+            </Typography>
+            <Cards data={overallData} />
+            <Typography variant="h3" className={styles.headingContainer}>
+              <Box fontWeight="fontWeightBold">
+                Spread Trends
             </Box>
-          </Typography>
+            </Typography>
+          </div>
           <CovidChart data={dailyData} />
+          <div className={styles.responsiveContainer}>
           <Typography variant="h3" className={styles.headingContainer}>
             <Box fontWeight="fontWeightBold">
-              <br/>
-              State Wise Data
-              <br/>
-              <br/>
+              <br />
+                State Wise Data
+                <br />
+              <br />
             </Box>
           </Typography>
+          </div>
           <Table data={stateWiseData} />
           <Footer />
         </div>

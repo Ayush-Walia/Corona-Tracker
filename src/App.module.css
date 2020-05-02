@@ -22,7 +22,7 @@ body {
 }
 
 @media (max-width: 770px) {
-    .container {
+    .responsiveContainer {
         margin: 0 10%;
     }
 }

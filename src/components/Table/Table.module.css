@@ -7,9 +7,8 @@
     justify-content: center;
 }
 
-/* Todo: Make responsive 
 @media (max-width: 770px) {
     .container {
-        width: 120%
+        width: 100%
     }
-} */
+}

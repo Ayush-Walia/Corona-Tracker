@@ -57,7 +57,7 @@ const CovidChart = (props) => {
           size: 3,
           colors: ["#000524"],
           strokeColor: "#00BAEC"
-        }
+        },
       }
     }
 

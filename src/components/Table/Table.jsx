@@ -1,5 +1,5 @@
 import React, { useState, Fragment } from 'react';
-import { withStyles, Box, Collapse, IconButton, Paper, Typography } from '@material-ui/core'
+import { withStyles, makeStyles, Box, Collapse, IconButton, Paper, Typography } from '@material-ui/core';
 import { Table as MaterialTable, TableBody, TableCell, TableContainer, TableHead,TableRow } from '@material-ui/core';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
@@ -15,6 +15,13 @@ const getTypography = (weight, text) => {
   )
 }
 
+const useStyles = makeStyles({
+  tableCell: {
+    paddingRight: 4,
+    paddingLeft: 5
+  }
+});
+
 const StyledTableCell = withStyles((theme) => ({
     head: {
         backgroundColor: theme.palette.common.black,
@@ -22,7 +29,7 @@ const StyledTableCell = withStyles((theme) => ({
     },
     body: {
         fontSize: 14,
-    },
+    }
 }))(TableCell);
 
 const StyledTableRow = withStyles((theme) => ({
@@ -34,6 +41,7 @@ const StyledTableRow = withStyles((theme) => ({
 }))(TableRow);
 
 const SubTable = ({ data }) => {
+  const classes = useStyles();
   if (data.districtData.length === 0) {
     return (
       <div className={styles.noDataContainer}> 
@@ -47,16 +55,16 @@ const SubTable = ({ data }) => {
       <MaterialTable size="small" aria-label="stateWiseData">
         <TableHead>
           <StyledTableRow>
-            <StyledTableCell>
+            <StyledTableCell className={classes.tableCell}>
               {getTypography("fontWeightBold", "District")}
             </StyledTableCell>
-            <StyledTableCell align="right">
+            <StyledTableCell className={classes.tableCell} align="right">
               {getTypography("fontWeightBold", "Confirmed")}
             </StyledTableCell>
-            <StyledTableCell align="right">
+            <StyledTableCell className={classes.tableCell} align="right">
               {getTypography("fontWeightBold", "Active")}
             </StyledTableCell>
-            <StyledTableCell align="right">
+            <StyledTableCell className={classes.tableCell} align="right">
               {getTypography("fontWeightBold", "Recovered")}
             </StyledTableCell>
             <StyledTableCell align="right">
@@ -67,16 +75,16 @@ const SubTable = ({ data }) => {
         <TableBody>
           {data.districtData.map((districtRow, index) => (
             <TableRow style ={ index % 2? { background : "#e9ecef" }:{ background : "white" }} key={districtRow.district}>
-              <TableCell component="th" scope="row">
+              <TableCell className={classes.tableCell} component="th" scope="row">
                 {getTypography("fontWeightMedium", districtRow.district)}
               </TableCell>
-              <TableCell align="right">
+              <TableCell className={classes.tableCell} align="right">
                 {getTypography("fontWeightMedium", districtRow.confirmed)}
               </TableCell>
-              <TableCell align="right">
+              <TableCell className={classes.tableCell} align="right">
                 {getTypography("fontWeightMedium", districtRow.active)}
               </TableCell>
-              <TableCell align="right">
+              <TableCell className={classes.tableCell} align="right">
                 {getTypography("fontWeightMedium", districtRow.recovered)}
               </TableCell>
               <TableCell align="right">
@@ -91,6 +99,7 @@ const SubTable = ({ data }) => {
 }
 
 function Row(props) {
+  const classes = useStyles();
   const { row } = props;
   const [open, setOpen] = useState(false);
   return (
@@ -101,16 +110,16 @@ function Row(props) {
             {open ? <KeyboardArrowDownIcon /> : <KeyboardArrowRightIcon />}
           </IconButton>
         </TableCell>
-              <StyledTableCell component="th" scope="row">
+              <StyledTableCell className={classes.tableCell} component="th" scope="row">
                 { getTypography("fontWeightBold", row.state) }
               </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell className={classes.tableCell} align="right">
                 { getTypography("fontWeightBold", row.confirmed) }
               </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell className={classes.tableCell} align="right">
                 { getTypography("fontWeightBold", row.active) }
               </StyledTableCell>
-              <StyledTableCell align="right">
+              <StyledTableCell className={classes.tableCell} align="right">
                 { getTypography("fontWeightBold", row.recovered) }
               </StyledTableCell>
               <StyledTableCell align="right">
@@ -131,23 +140,24 @@ function Row(props) {
 }
 
 const Table = (props) => {
+    const classes = useStyles();
     return (
         <div className={styles.container}>
             <TableContainer component={Paper}>
                 <MaterialTable aria-label="collapsible table">
                     <TableHead>
                         <StyledTableRow>
-                            <StyledTableCell />
-                            <StyledTableCell>
+                            <StyledTableCell className={classes.tableCell} />
+                            <StyledTableCell className={classes.tableCell} style={{ width: "auto", tableLayout: "auto" }}>
                               { getTypography("fontWeightBold", "State/UT") }
                             </StyledTableCell>
-                            <StyledTableCell align="right">
+                            <StyledTableCell className={classes.tableCell} align="right">
                               { getTypography("fontWeightBold", "Confirmed") }
                             </StyledTableCell>
-                            <StyledTableCell align="right">
+                            <StyledTableCell className={classes.tableCell} align="right">
                               { getTypography("fontWeightBold", "Active") }
                             </StyledTableCell>
-                            <StyledTableCell align="right">
+                            <StyledTableCell className={classes.tableCell} align="right">
                               { getTypography("fontWeightBold", "Recovered") }
                             </StyledTableCell>
                             <StyledTableCell align="right">

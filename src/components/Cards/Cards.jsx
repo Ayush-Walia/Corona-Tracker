@@ -44,7 +44,7 @@ const Cards = ({ data: { active, confirmed, recovered, deaths, lastupdatedtime }
                     <CardContent>
                         { getTypography("fontWeightBold", "Confirmed") }
                         { getTypography("fontWeightMedium", 
-                            <CountUp start = {0} end = {confirmed} duration = {2.5} separator = "," />
+                            <CountUp start = {0} end = {parseInt(confirmed)} duration = {2.5} separator = "," />
                         ) }
                         <Typography variant="subtitle2">Number of total cases of COVID-19</Typography>
                     </CardContent>
@@ -53,7 +53,7 @@ const Cards = ({ data: { active, confirmed, recovered, deaths, lastupdatedtime }
                     <CardContent>
                         { getTypography("fontWeightBold", "Active") }
                         { getTypography("fontWeightMedium", 
-                            <CountUp start={0} end={active} duration={2.5} separator="," />
+                            <CountUp start={0} end={parseInt(active)} duration={2.5} separator="," />
                         ) }
                         <Typography variant="subtitle2">Number of active cases of COVID-19</Typography>
                     </CardContent>
@@ -62,7 +62,7 @@ const Cards = ({ data: { active, confirmed, recovered, deaths, lastupdatedtime }
                     <CardContent>
                         { getTypography("fontWeightBold", "Recovered") }
                         { getTypography("fontWeightMedium", 
-                            <CountUp start={0} end={recovered} duration={2.5} separator="," />
+                            <CountUp start={0} end={parseInt(recovered)} duration={2.5} separator="," />
                         ) }
                         <Typography variant="subtitle2">Number of recoveries from COVID-19</Typography>
                     </CardContent>
@@ -71,14 +71,14 @@ const Cards = ({ data: { active, confirmed, recovered, deaths, lastupdatedtime }
                     <CardContent>
                         { getTypography("fontWeightBold", "Deaths") }
                         { getTypography("fontWeightMedium", 
-                            <CountUp start={0} end={deaths} duration={2.5} separator="," />
+                            <CountUp start={0} end={parseInt(deaths)} duration={2.5} separator="," />
                         ) }
                         <Typography variant="subtitle2">Number of deaths caused by COVID-19</Typography>
                     </CardContent>
                 </Grid>
             </Grid>
             <br />
-            <Typography color="textSecondary" className={styles.lastUpdate}>
+            <Typography component={'span'} color="textSecondary" className={styles.lastUpdate}>
                 <Box fontWeight="fontWeightRegular">
                     <span>Last Updated: {formatDate(lastupdatedtime)}</span>
                 </Box>
