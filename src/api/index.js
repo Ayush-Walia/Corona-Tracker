@@ -10,7 +10,7 @@ export const fetchData = async() => {
         const { active, confirmed, recovered, deaths, lastupdatedtime } = fetchedData.data.statewise[0];
         let modifiedData = {
             overallData: { active, confirmed, recovered, deaths, lastupdatedtime },
-            dailyData: fetchedData.data.cases_time_series.splice(42, fetchedData.data.cases_time_series.length),
+            dailyData: fetchedData.data.cases_time_series.splice(fetchedData.data.cases_time_series.length-62),
             stateWiseData: fetchedData.data.statewise.splice(1, fetchedData.data.statewise.length)
         }
         await modifiedData.stateWiseData.forEach((statename, index) => {
