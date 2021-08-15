@@ -16,10 +16,11 @@
     "react-countup": "^4.3.3",
     "react-dom": "^16.13.1",
     "react-feather": "^2.0.8",
-    "react-scripts": "3.4.1"
+    "react-scripts": "3.4.1",
+    "serve": "^12.0.0"
   },
   "scripts": {
-    "start": "serve -s build",
+    "start": "npx serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
