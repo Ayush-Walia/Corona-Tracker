@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const url = 'https://api.covid19india.org';
+const url = 'https://data.covid19india.org';
 
 export const fetchData = async () => {
     try {

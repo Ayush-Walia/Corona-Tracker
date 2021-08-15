@@ -15,15 +15,15 @@ const getTypography = (weight, text) => {
 }
 
 const months = {
-    '1': 'Jan',
-    '2': 'Feb',
-    '3': 'Mar',
-    '4': 'Apr',
-    '5': 'May',
-    '6': 'Jun',
-    '7': 'Jul',
-    '8': 'Aug',
-    '9': 'Sep',
+    '01': 'Jan',
+    '02': 'Feb',
+    '03': 'Mar',
+    '04': 'Apr',
+    '05': 'May',
+    '06': 'Jun',
+    '07': 'Jul',
+    '08': 'Aug',
+    '09': 'Sep',
     '10': 'Oct',
     '11': 'Nov',
     '12': 'Dec',
@@ -31,14 +31,17 @@ const months = {
 
 const formatDate = (rawDate) => {
     const [date, time] = rawDate.split(' ');
-    const [day, month, year] = date.split('/');
+    let [day, month, year] = date.split('/');
+    if (Math.log10(month)+1 === 1) {
+        month = "0"+month
+    }  
     return `${day} ${months[month]} ${year}, ${time} IST`
 };
 
 const Cards = ({ data: { active, confirmed, recovered, deaths, lastupdatedtime }}) => {
     return (
         <div className={ styles.container }> 
-            <Grid container spacing={2} justify="center">
+            <Grid container spacing={2} justifyContent="center">
                 <Grid item component={ Card } xs={12} md={2} className={cx(styles.card, styles.confirmed)}>
                     <CardContent>
                         { getTypography("fontWeightBold", "Confirmed") }
