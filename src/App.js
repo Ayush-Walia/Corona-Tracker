@@ -3,10 +3,10 @@ import { Cards, CovidChart, Table, ProgressIndicator, Footer } from './component
 import styles from './App.module.css';
 import { fetchData } from './api';
 import { Typography, Box } from '@material-ui/core';
-import { createMuiTheme } from '@material-ui/core/styles';
-import { ThemeProvider } from '@material-ui/styles';
+import { createTheme } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   typography: {
     fontFamily: [
       'Ubuntu',
